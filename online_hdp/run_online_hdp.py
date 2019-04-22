@@ -116,6 +116,7 @@ def run_online_hdp():
     c_test_train_folds = [read_data(filename) for filename in test_data_train_filenames]
     c_test_test_folds = [read_data(filename) for filename in test_data_test_filenames]
 
+  print("Data Reading Done")
   result_directory = "%s/corpus-%s-kappa-%.1f-tau-%.f-batchsize-%d" % (options.directory,
                                                                        options.corpus_name,
                                                                        options.kappa, 

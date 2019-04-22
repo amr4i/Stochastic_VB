@@ -1,5 +1,5 @@
 import os
-from itertools import izip
+from itertools import izip, islice
 import re
 # read and organize data
 
@@ -73,13 +73,37 @@ def read_stream_data(f, num_docs):
   c.num_docs = len(c.docs)
   return c
 
+
+def preprocess(filename):
+    curr_id = 1
+    outfilename = 'data.txt'
+    out_file = open(outfilename, 'w')
+    out_file.write(str(curr_id) + " ")
+    with open(filename, 'r') as f:
+        for line in islice(f, 3, None):
+            # print(line)
+            triplet = [int(i) for i in line.strip().split()]
+            if triplet[0] != curr_id:
+                curr_id = triplet[0]
+                out_file.write('\n')        
+                out_file.write(str(curr_id) + " ")
+            out_file.write(str(triplet[1]) + ":" + str(triplet[2])+" ")
+    out_file.close()
+    return outfilename
+
+
 # This version is about 33% faster
-def read_data(filename):
+def read_data(file):
     c = corpus()
+    print("Preprocessing Data")
+    filename = preprocess(file)
+    # filename = 'data.txt'
     splitexp = re.compile(r'[ :]')
+    print("Compiling corpus")
     for line in open(filename):
         d = document()
-        splitline = [int(i) for i in splitexp.split(line)]
+        # print(splitexp.split(line))
+        splitline = [int(i) for i in splitexp.split(line.strip())]
         wordids = splitline[1::2]
         wordcts = splitline[2::2]
         d.words = wordids
@@ -96,6 +120,7 @@ def read_data(filename):
     c.num_docs = len(c.docs)
     return c
 
+
 def count_tokens(filename):
     num_tokens = 0
     splitexp = re.compile(r'[ :]')
@@ -105,6 +130,7 @@ def count_tokens(filename):
         num_tokens += sum(wordcts)
 
     return num_tokens
+
 
 splitexp = re.compile(r'[ :]')
 def parse_line(line):
