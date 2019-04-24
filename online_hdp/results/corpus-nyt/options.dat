@@ -1,0 +1,16 @@
+test_data_path_in_folds None
+max_iter -1
+random_seed 999931111
+D 300000
+K 20
+data_path /media/amrits/D0D41252D4123AE4/nytcorpus/data/docword.nytimes.txt
+test_data_path None
+eta 0.01
+T 300
+W 102660
+var_converge 0.0001
+directory results
+alpha 1.0
+gamma 1.0
+max_time 100
+corpus_name nyt

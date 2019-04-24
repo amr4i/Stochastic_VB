@@ -1,2 +1,4 @@
 online_hdp/data.txt
 *.pyc
+*.model
+*.topics

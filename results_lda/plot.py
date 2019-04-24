@@ -7,8 +7,8 @@ import numpy as np
 
 
 def read_files(kappa, batchsize):	
-	time = np.loadtxt('time_'+ str(kappa) + '_' + str(batchsize))
-	perplexity = np.loadtxt('perplexity_'+ str(kappa) + '_' + str(batchsize))
+	time = np.loadtxt(str(kappa)+'_'+str(batchsize)+'/time_'+ str(kappa) + '_' + str(batchsize))
+	perplexity = np.loadtxt(str(kappa)+'_'+str(batchsize)+'/perplexity_'+ str(kappa) + '_' + str(batchsize))
 	return time, perplexity
 
 
@@ -52,8 +52,8 @@ def main():
 	plt.figure()
 	for tv, pv in zip(plt_time, plt_perplexity):
 
-		xnew = np.linspace(tv.min(),tv.max(),1000) 
-		smooth = spline(tv,pv,xnew)
+		# xnew = np.linspace(tv.min(),tv.max(),1000) 
+		# smooth = spline(tv,pv,xnew)
 		# plt.plot(xnew, smooth)
 		plt.plot(tv, pv)
 
@@ -94,10 +94,10 @@ def main():
 	plt.figure()
 	for tv, pv in zip(plt_time, plt_perplexity):
 
-		xnew = np.linspace(tv.min(),tv.max(),10) 
+		# xnew = np.linspace(tv.min(),tv.max(),10) 
 		# spl = make_interp_spline(tv, pv, k=9)
 		# smooth = spl(xnew)
-		smooth = spline(tv,pv,xnew)
+		# smooth = spline(tv,pv,xnew)
 		
 		# plt.plot(xnew, smooth)
 		# plt.plot(xnew,smooth)

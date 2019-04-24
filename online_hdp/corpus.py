@@ -95,9 +95,9 @@ def preprocess(filename):
 # This version is about 33% faster
 def read_data(file):
     c = corpus()
-    print("Preprocessing Data")
-    filename = preprocess(file)
-    # filename = 'data.txt'
+    # print("Preprocessing Data")
+    # filename = preprocess(file)
+    filename = 'data.txt'
     splitexp = re.compile(r'[ :]')
     print("Compiling corpus")
     for line in open(filename):

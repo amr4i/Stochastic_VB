@@ -110,6 +110,7 @@ def run_hdp():
   test_log_file = file("%s/test-log.dat" % result_directory, "w") 
   test_log_file.write("iteration time doc.count score word.count score.split word.count.split\n")
 
+  print "running HDP"
   while (options.max_iter == -1 or iter < options.max_iter) and total_time < options.max_time:
     t0 = time.clock()
     # Run one step iteration.
